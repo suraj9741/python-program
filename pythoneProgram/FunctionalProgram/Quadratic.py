@@ -10,46 +10,44 @@ import math
 
 class quadratic :
 
-    # constructor
-    def __init__(self) :
-        self.a = 0
-        self.b = 0
-        self.c = 0
-        self.root1 = 0
-        self.root2 = 0
-        self.delta = 0
-
-
     def acceptingValue(self) :
-        # Accepting a from equation
-        self.a = int(input('Enter a in ( aX^2 + bX + c ) : '))
+        while True:
+            # Accepting a from equation
+            a = int(input('Enter a in ( aX^2 + bX + c ) : '))
+            if a == 0:
+                print('You enter 0 not valid its not Quadratic equation')
+            else:
+                break
         # Accepting b from equation
-        self.b = int(input('Enter b in ( aX^2 + bX + c ) : '))
+        b = int(input('Enter b in ( aX^2 + bX + c ) : '))
         # Accepting c from equation
-        self.c = int(input('Enter c in ( aX^2 + bX + c ) : '))
+        c = int(input('Enter c in ( aX^2 + bX + c ) : '))
         # print equation
-        print(f'Equation is : {self.a}X^2 + {self.b}X + {self.c}')
+        print(f'Equation is : {a}X^2 + {b}X + {c}')
+        return a, b, c
 
 
-    def calculation(self) :
+    def calculation(self, a, b, c) :
         # Calculate delta
-        self.delta = (self.b * self.b) - (4 * self.a * self.c)
+        delta = (b * b) - (4 * a * c)
         # Calculate Root 1
-        self.root1 = (-self.b + math.sqrt(self.delta)) / (2 * self.a)
+        root1 = (-b + math.sqrt(delta)) / (2 * a)
         # Calculate Root 2
-        self.root2 = (-self.b - math.sqrt(self.delta)) / (2 * self.a)
-        print(f'Delta is {self.delta} \nRoot 1 of x : {self.root1} \nRoot 2 of x : {self.root2}')
+        root2 = (-b - math.sqrt(delta)) / (2 * a)
+        print(f'Delta is {delta} \nRoot 1 of x : {root1} \nRoot 2 of x : {root2}')
 
 
 # main
 if __name__ == '__main__' :
-    # Exception Handling
-    try :
-        # creating object
-        quadraticObject = quadratic()
-        # Calling Method AcceptingValue
-        quadraticObject.acceptingValue()
-        # Calling Method Calculation
-        quadraticObject.calculation()
-    except :
-        print('Exception Raised.')
+    while True:
+        # Exception Handling
+        try :
+            # creating object
+            quadraticObject = quadratic()
+            # Calling Method AcceptingValue
+            a, b, c = quadraticObject.acceptingValue()
+            # Calling Method Calculation
+            quadraticObject.calculation(a, b, c)
+            break
+        except ValueError:
+            print('You enter str must enter int value')
