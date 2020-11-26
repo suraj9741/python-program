@@ -10,23 +10,18 @@ import math
 
 class  distance:
 
-    # constructor
-    def __init__(self) :
-        self.X1 = 0
-        self.Y1 = 0
-        self.X2 = 0
-        self.Y2 = 0
-        self.distance = 0
-
     def acceptValue(self) :
         # Accept Y Point
-        self.X2 = int(input('Enter X : '))
+        X2 = int(input('Enter X : '))
         # Accept Y Point
-        self.Y2 = int(input('Enter Y : '))
-    def calculateDistance(self):
+        Y2 = int(input('Enter Y : '))
+        return X2, Y2
+    def calculateDistance(self, X2, Y2):
         # Euclidean distance Formula
-        self.distance = math.sqrt(pow((self.X1-self.X2), 2) + pow((self.Y1-self.Y2), 2))
-        print('Distance between two points : ', self.distance)
+        X1=0
+        Y1=0
+        distance = math.sqrt(pow((X1-X2), 2) + pow((Y1-Y2), 2))
+        print('Distance between two points : ', distance)
 
 # main
 if __name__ == '__main__':
@@ -35,8 +30,8 @@ if __name__ == '__main__':
         # creating object
         distanceObject = distance()
         # Calling Method AcceptValue
-        distanceObject.acceptValue()
+        X2, Y2 = distanceObject.acceptValue()
         # Calling Method calculateDistance
-        distanceObject.calculateDistance()
+        distanceObject.calculateDistance(X2, Y2)
     except:
         print('Exception Raised.')

@@ -12,11 +12,11 @@ class twoDArray :
     def __init__(self, row, column) :
         self.row = row
         self.column = column
-        self.twodArray =[]
-        print(self.row, self.column)
+        print(f'row = {self.row}, column = {self.column}')
 
     # Enter Value in 2D Array
     def enterTheValue(self):
+        twodArray =[]
         print("Enter the entries rowwise : ")
         # A for loop for row entries
         for i in range(self.row):
@@ -26,29 +26,41 @@ class twoDArray :
             for j in range(self.column):
                 value = int(input())
                 a.append(value)
-            self.twodArray.append(a)
+            twodArray.append(a)
+        #  Calling Method PrintTwodArray
+        self.printTwodArray(twodArray)
 
     # Printing 2D Array
-    def printTwodArray(self):
+    def printTwodArray(self,twodArray):
         for i in range(self.row):
             for j in range(self.column):
-                print(self.twodArray[i][j], end = " ")
+                print(twodArray[i][j], end = " ")
             print()
 
 
 # main
 if __name__ == '__main__' :
     # Exception Handling
-    try:
-        # accepting Row Number from User
-        row = int(input('Enter the number of Rows : '))
-        # accepting Column Number from User
-        column = int(input('Enter the number of Columns : '))
-        # creating object and pass Parameter
-        object = twoDArray(row, column)
-        # Calling Method EnterTheValue
-        object.enterTheValue()
-        #  Calling Method PrintTwodArray
-        object.printTwodArray()
-    except :
-        print('Exception Raised.')
+    while True:
+        try:
+            while True:
+                # accepting Row Number from User
+                row = int(input('Enter the number of Rows : '))
+                if row > 0:
+                    break
+                else:
+                    print('You enter Less than 0 row value.\nEnter again')
+            while True:
+                # accepting Column Number from User
+                column = int(input('Enter the number of Columns : '))
+                if column > 0:
+                    break
+                else:
+                    print('You enter Less than 0 column value.\nEnter again')
+            # creating object and pass Parameter
+            object = twoDArray(row, column)
+            # Calling Method EnterTheValue
+            object.enterTheValue()
+            break
+        except ValueError:
+            print('You enter str must enter int value')

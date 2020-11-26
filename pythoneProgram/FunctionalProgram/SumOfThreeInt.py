@@ -9,29 +9,31 @@
 
 class sumOfThreeInt :
 
-    # constructor
-    def __init__(self) :
-        self.listLenght = 0
-        self.list = []
-        self.flag = False
-
     # Accepting List Number
     def acceptingListValue(self):
-        self.listLenght = int(input('How many element you wnat to enter :'))
+        list = []
+        while True:
+            listLength = int(input('How many element you want to enter :'))
+            if listLength > 0:
+                break
+            else:
+                print('Array cannot be less than 0 so enter greater value.')
         print('Enter the number :')
-        for i in range(self.listLenght) :
-            self.list.append(int(input()))
-        print (self.list)
+        for i in range(listLength):
+            list.append(int(input()))
+        # [0, -1, 2, -3, 1]
+        print(list)
+        return listLength, list
 
     # Find Triplate Method
-    def findTriplets(self):
+    def findTriplets(self, listLength,list):
         found = False
-        for i in range(0, self.listLenght - 2):
-            for j in range(i + 1, self.listLenght - 1):
-                for k in range(j + 1, self.listLenght):
-                    if (self.list[i] + self.list[j] + self.list[k] == 0):
+        for i in range(0, listLength - 2):
+            for j in range(i + 1, listLength - 1):
+                for k in range(j + 1, listLength):
+                    if (list[i] + list[j] + list[k] == 0):
                         # Print Triplets
-                        print(self.list[i], self.list[j], self.list[k])
+                        print(list[i], list[j], list[k])
                         found = True
         # If no triplet with 0 sum found in array
         if found == False:
@@ -40,13 +42,15 @@ class sumOfThreeInt :
 
 # main
 if __name__ == '__main__' :
-    # Exception Handling
-    try :
-        # creating object
-        sumOfThreeIntobject = sumOfThreeInt()
-        # Calling Method AcceptingListValue
-        sumOfThreeIntobject.acceptingListValue()
-        # Calling Method FindTriplets
-        sumOfThreeIntobject.findTriplets()
-    except :
-        print('Exception Raised.')
+    while True:
+        # Exception Handling
+        try :
+            # creating object
+            sumOfThreeIntobject = sumOfThreeInt()
+            # Calling Method AcceptingListValue
+            listLength, list = sumOfThreeIntobject.acceptingListValue()
+            # Calling Method FindTriplets
+            sumOfThreeIntobject.findTriplets(listLength, list)
+            break
+        except ValueError:
+            print('You enter str must enter int value')
