@@ -12,26 +12,32 @@ class harmonicNumber :
     # constructor
     def __init__(self, userNumber):
         self.userNumber = userNumber
-        self.div = 0
-        self.sum = 0
 
     # Harmonic Value Calculater
     def harmonicValue(self):
+        sum = 0
         for i in range(1,(self.userNumber+1)):
-            self.div = 1/i
-            self.sum = self.sum + self.div
-        print(self.sum)
+            div = 1/i
+            sum = sum + div
+        print(sum)
 
 
 # Main Method
 if __name__ == '__main__' :
     # Exception Handling
-    try:
-        # accepting Number from User
-        userNumber = int(input('Enter the number upto you want to print harmonic value :'))
-        # creating object and pass Parameter
-        harmonicNumberObject = harmonicNumber(userNumber)
-        # Calling Method HarmonicValue
-        harmonicNumberObject.harmonicValue()
-    except:
-        print('Exception Raised.')
+    while True:
+        try:
+            # accepting Number from User
+            while True:
+                userNumber = int(input('Enter the number upto you want to print harmonic value :'))
+                if userNumber > 0:
+                    break
+                else:
+                    print('You enter value less than 0 ')
+            # creating object and pass Parameter
+            harmonicNumberObject = harmonicNumber(userNumber)
+            # Calling Method HarmonicValue
+            harmonicNumberObject.harmonicValue()
+            break
+        except ValueError:
+            print('You enter str must enter int value')
