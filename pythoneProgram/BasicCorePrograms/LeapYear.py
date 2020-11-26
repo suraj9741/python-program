@@ -5,31 +5,32 @@
    * package - ${PACKAGE_NAME}
    * Title - Leap Year.
 """
+
 class leapYear :
 
-    # constructor
-    def __init__(self, year) :
-        self.year = year
-
     # Check user writen Value is 4 digit oe not
-    def checkDigit(self):
-        if len(str(self.year)) == 4:
-            # Calling CheckLeapYear Method
-            if (self.checkLeapYear()):
-                return f'{self.year} is Leap Year'
-            else :
-                return f'{self.year} is not Leap Year'
-        else :
-            return f'{self.year} is not 4 digit number'
+    def acceptandCheckDigit(self):
+        while True:
+            # Accepting Year from user
+            year = int(input('Enter Year : '))
+            if len(str(year)) == 4:
+                # Calling CheckLeapYear Method
+                if (self.checkLeapYear(year)):
+                    return f'{year} is Leap Year'
+                else:
+                    return f'{year} is not Leap Year'
+            else:
+                print(f'{year} is not 4 digit number\nEnter again')
+
 
     # Check Leap Year Method
-    def checkLeapYear(self):
+    def checkLeapYear(self,year):
         # Check Year divisible by 4 or not
-        if (self.year % 4) == 0:
+        if (year % 4) == 0:
             # Check Year divisible by 100 or not
-            if (self.year % 100) == 0:
+            if (year % 100) == 0:
                 # Check Year divisible by 400 or not
-                if (self.year % 400) == 0:
+                if (year % 400) == 0:
                     return True
                 else:
                     return False
@@ -42,11 +43,11 @@ class leapYear :
 # Main Method
 if __name__ == '__main__' :
     # Exception Handling
-    try :
-        # Accepting Year from user
-        year = int(input('Enter Year : '))
-        # creating object and pass Parameter
-        leapYearObject = leapYear(year)
-        print(leapYearObject.checkDigit())
-    except :
-        print('Exception Raised.')
+    while True:
+        try:
+            # creating object and pass Parameter
+            leapYearObject = leapYear()
+            print(leapYearObject.acceptandCheckDigit())
+            break
+        except ValueError:
+            print('You enter str must enter int value')

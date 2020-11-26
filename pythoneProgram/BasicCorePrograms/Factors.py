@@ -9,25 +9,20 @@ import math
 
 class factors :
 
-    # constructor
-    def __init__(self, userNumber) :
-        self.userNumber = userNumber
-        self.factor = 1
-
     # method for calculating prime factor
-    def calculateFactor(self) :
+    def calculateFactor(self,userNumber) :
         # print the two and divide by two if remainder is zero
-        while self.userNumber % 2 == 0:
+        while userNumber % 2 == 0:
             print ('2'),
-            self.userNumber = self.userNumber / 2
+            userNumber = userNumber / 2
         # find square root and increment by 2 in range of 3 to squareroot value
-        for i in range(3, int(math.sqrt(self.userNumber)) + 1, 2):
-            while self.userNumber % i == 0:
+        for i in range(3, int(math.sqrt(userNumber)) + 1, 2):
+            while userNumber % i == 0:
                 print(i)
-                self.userNumber = self.userNumber / i
+                userNumber = userNumber / i
         # some time prime factor remaining at last so tat will print
-        if self.userNumber >2 :
-            print(int(self.userNumber))
+        if userNumber >2 :
+            print(int(userNumber))
 
 
 # main
@@ -37,8 +32,8 @@ if __name__ == '__main__' :
         # accepting Number from User
         userNumber = int(input('Enter a number : '))
         # creating object and pass Parameter
-        factorsObject = factors(userNumber)
+        factorsObject = factors()
         # Calling Method CalculateFactor
-        factorsObject.calculateFactor()
+        factorsObject.calculateFactor(userNumber)
     except :
         print('Exception Raised.')

@@ -8,34 +8,28 @@
 import random
 
 class flipCoin :
-    # constructor
-    def __init__(self):
-        self.flipCoinNumber = 0
-        self.headTail = 0
-        self.head = 0
-        self.tail =0
 
     # Coin flip Method
     def numberOfTimeFlipCoin (self):
-        self.flipCoinNumber = random.randint(5,10)
-        print(self.flipCoinNumber,' Time coin flipped : ')
-        for x in range(self.flipCoinNumber):
-            self.headTail = random.randint(0,1)
-            if self.headTail == 0 :
+        flipCoinNumber = random.randint(5,10)
+        print(flipCoinNumber,' Time coin flipped : ')
+        for x in range(flipCoinNumber):
+            headTail = random.randint(0,1)
+            if headTail == 0 :
                 print('Round ' + str(x+1) + ' H Win')
-                self.head = self.head + 1
+                head = head + 1
             else :
                 print('Round ' + str(x+1) + ' T Win')
-                self.tail = self.tail + 1
-        return self.flipCoinNumber, self.head, self.tail
+                tail = tail + 1
+        return flipCoinNumber, head, tail
 
     # Calculateing Peecentage of Head and Tail
     def CalculatePercentage (self):
-        self.flipCoinNumber, self.head, self.tail = self.numberOfTimeFlipCoin()
-        self.head = self.head / self.flipCoinNumber * 100
-        self.tail = self.tail / self.flipCoinNumber * 100
-        print('Head percentage = ' + str(self.head))
-        print('Tail percentage = ' + str(self.tail))
+        flipCoinNumber, head, tail = self.numberOfTimeFlipCoin()
+        head = head / flipCoinNumber * 100
+        tail = tail / flipCoinNumber * 100
+        print('Head percentage = ' + str(head))
+        print('Tail percentage = ' + str(tail))
 
     randomNumber = random.randint(1,9)
 
