@@ -8,36 +8,35 @@
 
 class powerOf2:
 
-    # constructor
-    def __init__(self, userNumber):
-        self.userNumber = userNumber
-        self.power = 1
-
     # Check the range in between 0 <= Number < 31
     def checkUserNumber(self):
-        if 0 <= self.userNumber < 31 :
-            # Calling Method PowerTable
-            self.powerTable()
-        else :
-            print('Overflows int / Out of range')
+        while True:
+            # accepting Number from User
+            userNumber = int(input('Enter the value you want print table : '))
+            if 0 <= userNumber < 31 :
+                # Calling Method PowerTable
+                self.powerTable(userNumber)
+                break
+            else:
+                print('Overflows int / Out of range\nEnter again 0 to less than 31')
 
     # Print Power of 2 table
-    def powerTable(self):
-        for i in range(self.userNumber+1):
+    def powerTable(self, userNumber):
+        for i in range(userNumber+1):
             # pow(2,3) = (2*2*2) its power function
-            self.power = pow(2,i)
-            print(f'2^{i} =',self.power)
+            power = pow(2,i)
+            print(f'2^{i} =',power)
 
 
 # Main Method
 if __name__ == '__main__':
-    # Exception Handling
-    try:
-        # accepting Number from User
-        userNumber = int(input('Enter the value you want print table : '))
-        # creating object and pass Parameter
-        powerOf2Object = powerOf2(userNumber)
-        # Calling Method CheckUserNumber
-        powerOf2Object.checkUserNumber()
-    except :
-        print('Exception Raised.')
+    while True:
+        # Exception Handling
+        try:
+            # creating object and pass Parameter
+            powerOf2Object = powerOf2()
+            # Calling Method CheckUserNumber
+            powerOf2Object.checkUserNumber()
+            break
+        except ValueError:
+            print('You enter str must enter int value')
