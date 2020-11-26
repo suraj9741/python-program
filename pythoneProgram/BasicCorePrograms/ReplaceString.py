@@ -11,7 +11,7 @@ class replaceString :
     def __init__(self):
         self.userName = " "
 
-    # Method To Accepting and check the min character condition
+    # Method To Accepting and check the min character it want to change condition
     def main(self):
         self.userName = input("Enetr the User Name : ")
         lenght = len(self.userName)
